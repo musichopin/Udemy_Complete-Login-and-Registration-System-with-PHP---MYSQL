@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>001 Database Connection Quiz</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 4, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 576722, "assessment_type": "multiple-choice", "created": "2015-06-15T10:52:12Z", "prompt": {"question": "<p>Which of the following is the correct way to create an instance of a PDO class?</p>", "answers": ["$db = PDO($dsn, $username, $password);", "$db = new PDO($dsn, $username, $password);", "$db = new PDO($username, $password, $dsn);"], "relatedLectureIds": ["3037704"], "feedbacks": ["this is not correct we need to use the new keyword when instantiating objects", "When creating an instance of the PDO class we use the new keyword and then specify the data source name (dsn), database username and password", "data source name is the first parameter that should be passes into the PDO constructor "]}, "correct_response": ["b"], "score": 1.0, "updated": "2015-06-15T10:52:12Z", "old_assessment_type": null, "question_plain": "Which of the following is the correct way to create an instance of a PDO class?", "related_lectures": [{"_class": "lecture", "id": 3037704, "title": "Database Connection Script with PDO", "created": "2015-06-04T06:42:42Z", "asset": {"_class": "asset", "id": 3525426, "asset_type": "Video", "title": "databaseconnection.mp4", "created": "2015-06-15T21:43:59Z"}, "object_index": 3, "url": "/user-authentication-code-a-simple-login-system-with-php/learn/v4/t/lecture/3037704"}]}, {"_class": "assessment", "id": 576734, "assessment_type": "multiple-choice", "created": "2015-06-15T11:02:31Z", "prompt": {"question": "<p>Data source name consists of the following in order</p>", "answers": ["Driver, hostname and database name", "Username, password, hostname and database name", "Driver, database username, hostname and database name", "Driver, database name and host name "], "relatedLectureIds": ["3037704"], "feedbacks": ["The correct or for dns string is the drive e.g. mysql, hostname e.g. localhost and database name e.g. register", "username and password are not part of dsn", "database name is not include in the dsn ", "hostname should be before database name"]}, "correct_response": ["a"], "score": 1.0, "updated": "2015-06-15T11:02:31Z", "old_assessment_type": null, "question_plain": "Data source name consists of the following in order", "related_lectures": [{"_class": "lecture", "id": 3037704, "title": "Database Connection Script with PDO", "created": "2015-06-04T06:42:42Z", "asset": {"_class": "asset", "id": 3525426, "asset_type": "Video", "title": "databaseconnection.mp4", "created": "2015-06-15T21:43:59Z"}, "object_index": 3, "url": "/user-authentication-code-a-simple-login-system-with-php/learn/v4/t/lecture/3037704"}]}, {"_class": "assessment", "id": 576736, "assessment_type": "multiple-choice", "created": "2015-06-15T11:03:58Z", "prompt": {"question": "<p>By default PDO is set to PDO::ERRMODE_SILENT</p>", "answers": ["True", "False"], "relatedLectureIds": ["3037704"]}, "correct_response": ["a"], "score": 1.0, "updated": "2015-06-15T11:03:58Z", "old_assessment_type": null, "question_plain": "By default PDO is set to PDO::ERRMODE_SILENT", "related_lectures": [{"_class": "lecture", "id": 3037704, "title": "Database Connection Script with PDO", "created": "2015-06-04T06:42:42Z", "asset": {"_class": "asset", "id": 3525426, "asset_type": "Video", "title": "databaseconnection.mp4", "created": "2015-06-15T21:43:59Z"}, "object_index": 3, "url": "/user-authentication-code-a-simple-login-system-with-php/learn/v4/t/lecture/3037704"}]}, {"_class": "assessment", "id": 576752, "assessment_type": "multiple-choice", "created": "2015-06-15T11:42:09Z", "prompt": {"question": "<p>Which of the following can be used to set PDO TO EXCEPTION mode i.e. PDO::ERRMODE_EXCEPTION</p>", "answers": ["$db->setObjectAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);", "$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);", "$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);"], "relatedLectureIds": ["3037704"], "feedbacks": ["", "", ""]}, "correct_response": ["b"], "score": 1.0, "updated": "2015-06-15T11:42:09Z", "old_assessment_type": null, "question_plain": "Which of the following can be used to set PDO TO EXCEPTION mode i.e. PDO::ERRMODE_EXCEPTION", "related_lectures": [{"_class": "lecture", "id": 3037704, "title": "Database Connection Script with PDO", "created": "2015-06-04T06:42:42Z", "asset": {"_class": "asset", "id": 3525426, "asset_type": "Video", "title": "databaseconnection.mp4", "created": "2015-06-15T21:43:59Z"}, "object_index": 3, "url": "/user-authentication-code-a-simple-login-system-with-php/learn/v4/t/lecture/3037704"}]}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>
